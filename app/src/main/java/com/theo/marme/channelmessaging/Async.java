@@ -25,13 +25,14 @@ public class Async extends AsyncTask<Long,Integer, String> {
 
     private Context myContext;
     private HashMap<String, String> connectInfo = new HashMap<>();
+    private String url;
 
     public ArrayList<OnDownloadCompleteListener> listeners = new ArrayList<>();
 
-    public Async(Context myContext, HashMap connectInfo)
-    {
-        this.myContext = myContext;
+    public Async(Context myContext,String url, HashMap<String,String>connectInfo) {
         this.connectInfo = connectInfo;
+        this.myContext = myContext;
+        this.url = url;
     }
 
     @Override protected void onPreExecute()
@@ -107,6 +108,8 @@ public class Async extends AsyncTask<Long,Integer, String> {
     public void setOnDownloadCompleteListener(OnDownloadCompleteListener listener) {
         listeners.add(listener);
     }
+
+
 }
 
 

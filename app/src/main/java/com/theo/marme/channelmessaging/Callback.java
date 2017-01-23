@@ -6,7 +6,8 @@ package com.theo.marme.channelmessaging;
 public class Callback {
     private String username;
     private  String password;
-    private String accesstokens;
+    int code;
+    String accesstokens;
 
     public Callback() {
 
