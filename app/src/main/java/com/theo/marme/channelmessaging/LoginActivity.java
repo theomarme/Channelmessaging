@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 
 import java.util.HashMap;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener,OnDownloadCompleteListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, Async.OnDownloadCompleteListener{
 
     public static final String PREFS_NAME = "stockage";
     private Button btnValider;

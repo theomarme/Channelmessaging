@@ -40,11 +40,13 @@ public class Async extends AsyncTask<Long,Integer, String> {
         super.onPreExecute();
 
     }
+    public interface OnDownloadCompleteListener{
+        public  void onDownloadComplete(String result);
+    }
 
     @Override protected void onProgressUpdate(Integer... values)
     {
         super.onProgressUpdate(values);
-
     }
 
     @Override protected String doInBackground(Long... arg0)
