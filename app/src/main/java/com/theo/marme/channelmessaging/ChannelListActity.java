@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+
 import java.util.HashMap;
 
 /**
@@ -38,6 +40,11 @@ public class ChannelListActity extends AppCompatActivity implements Async.OnDown
 
     @Override
     public void onDownloadComplete(String result) {
+
+        Gson gson=new Gson();
+        Channels chan=gson.fromJson(result,Channels.class);
+        listview.setAdapter(new ChannelListArrayAdapter(getApplicationContext(),R.layout.activity_channel_list,chan.getChannels()));
+
 
     }
 }
