@@ -35,4 +35,9 @@ public class ChannelListActity extends AppCompatActivity implements Async.OnDown
         d.execute();
 
     }
+
+    @Override
+    public void onDownloadComplete(String result) {
+
+    }
 }

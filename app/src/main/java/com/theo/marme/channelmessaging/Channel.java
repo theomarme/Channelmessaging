@@ -5,7 +5,7 @@ package com.theo.marme.channelmessaging;
  */
 public class Channel {
 
-    int channelID;
-    String name;
-    int connectedusers;
+   public int channelID;
+    public String name;
+    public int connectedusers;
 }
