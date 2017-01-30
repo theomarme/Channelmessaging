@@ -8,17 +8,9 @@ import java.util.List;
  */
 public class Channels {
 
-    private List<Channel> channels;
+    ArrayList<Channel> channels = new ArrayList<>();
 
-    public List<Channel> getChannels(){
-        return channels;
+    public Channels(){
 
-    }
-    public void setChannels(List<Channel> channels){
-        this.channels=channels;
-    }
-
-    public Channels(List<Channel> channels){
-        this.channels=channels;
     }
 }

@@ -5,37 +5,37 @@ package com.theo.marme.channelmessaging;
  */
 public class Channel {
 
-   public int channelID;
-    public String name;
-    public int connectedusers;
+    int channelID;
+    String name;
+    String connectedusers;
 
-    public Channel(int channelID, String name, int connectedusers) {
-        this.channelID = channelID;
-        this.name = name;
+    public Channel(String connectedusers, String name, int channelID) {
         this.connectedusers = connectedusers;
+        this.name = name;
+        this.channelID = channelID;
     }
 
     public int getChannelID() {
         return channelID;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getConnectedusers() {
-        return connectedusers;
-    }
-
     public void setChannelID(int channelID) {
         this.channelID = channelID;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setConnectedusers(int connectedusers) {
+    public String getConnectedusers() {
+        return connectedusers;
+    }
+
+    public void setConnectedusers(String connectedusers) {
         this.connectedusers = connectedusers;
     }
 }

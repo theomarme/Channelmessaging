@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             String Login = String.valueOf(etIdentifiant.getText());
             String Pwd = String.valueOf(etmotdepasse.getText());
             Async d = new Async(this,"http://www.raphaelbischof.fr/messaging/?function=connect",connectInfo);
-            d.setOnDownloadCompleteListener(this);
+            d.addOnDownloadCompleteListener(this);
             d.execute();
         }
     }

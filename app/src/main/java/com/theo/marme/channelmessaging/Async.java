@@ -21,45 +21,21 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Created by marmet on 20/01/2017.
  */
-public class Async extends AsyncTask<Long,Integer, String> {
+public class Async extends AsyncTask<Void,Void, String> {
 
-    private Context myContext;
-    private HashMap<String, String> connectInfo = new HashMap<>();
-    private String url;
+    Context myContext;
+    HashMap<String,String> params;
+    String url;
 
-    public ArrayList<OnDownloadCompleteListener> listeners = new ArrayList<>();
-
-    public Async(Context myContext,String url, HashMap<String,String>connectInfo) {
-        this.connectInfo = connectInfo;
+    public Async(Context myContext,String url, HashMap<String,String>params) {
+        this.params = params;
         this.myContext = myContext;
         this.url = url;
     }
 
-    @Override protected void onPreExecute()
-    {
-        super.onPreExecute();
-
-    }
-    public interface OnDownloadCompleteListener{
-        public  void onDownloadComplete(String result);
-    }
-
-    @Override protected void onProgressUpdate(Integer... values)
-    {
-        super.onProgressUpdate(values);
-    }
-
-    @Override protected String doInBackground(Long... arg0)
-    {
-        return performPostCall("http://www.raphaelbischof.fr/messaging/?function=connect", connectInfo);
-    }
-
-    @Override protected void onPostExecute(String result)
-    {
-        for(OnDownloadCompleteListener listener : listeners)
-        {
-            listener.onDownloadComplete(result);
-        }
+    @Override
+    protected String doInBackground(Void... input) {
+        return performPostCall(url,params);
     }
 
     public String performPostCall(String requestURL, HashMap<String, String> postDataParams) {
@@ -79,17 +55,19 @@ public class Async extends AsyncTask<Long,Integer, String> {
             writer.flush();
             writer.close();
             os.close();
-            int responseCode = conn.getResponseCode();
+            int responseCode =conn.getResponseCode();
             if (responseCode == HttpsURLConnection.HTTP_OK) {
                 String line;
-                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                while ((line = br.readLine()) != null) {
-                    response += line;
+                BufferedReader br =new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                while ((line=br.readLine()) != null) {
+                    response+=line;
                 }
-            } else {
-                response = "";
             }
-        } catch (Exception e) {
+            else {
+                response ="";
+            }
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
         return response;
@@ -97,7 +75,7 @@ public class Async extends AsyncTask<Long,Integer, String> {
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
         StringBuilder result = new StringBuilder();
         boolean first = true;
-        for(Map.Entry<String, String> entry : params.entrySet()){
+        for (Map.Entry<String, String> entry : params.entrySet()){
             if (first) first = false;
             else result.append("&");
             result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
@@ -107,11 +85,23 @@ public class Async extends AsyncTask<Long,Integer, String> {
         return result.toString();
     }
 
-    public void setOnDownloadCompleteListener(OnDownloadCompleteListener listener) {
-        listeners.add(listener);
+    public interface OnDownloadCompleteListener{
+        public void onDownloadComplete(String content);
+    }
+
+    ArrayList<OnDownloadCompleteListener> al = new ArrayList<OnDownloadCompleteListener>();
+
+    public void addOnDownloadCompleteListener(OnDownloadCompleteListener listener){
+        al.add(listener);
     }
 
 
+    @Override
+    protected void onPostExecute(String result) {
+        for(OnDownloadCompleteListener var : al){
+            var.onDownloadComplete(result);
+        }
+    }
 }
 
 
