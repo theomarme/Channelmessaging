@@ -53,7 +53,6 @@ public class ChannelListActity extends AppCompatActivity implements Async.OnDown
         for(Channel ch :c.channels){
             Toast.makeText(this, ch.name, Toast.LENGTH_SHORT).show();
         }
-
         lvChannels = (ListView) findViewById(R.id.lv_id);
         lvChannels.setAdapter(new ChannelListArrayAdapter(getApplicationContext(), c.channels));
         lvChannels.setOnItemClickListener(this);

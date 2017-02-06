@@ -20,6 +20,7 @@ public class MessageListActivit extends AppCompatActivity implements View.OnClic
 
     private ListView lvMessage;
     private Button btnSend;
+    public static final String PREFS_NAME = "stockage";
 
     protected void onCreate(Bundle savedInstanceState){
 

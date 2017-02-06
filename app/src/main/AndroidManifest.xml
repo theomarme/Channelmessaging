@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name="ChannelListActity"></activity>
+        <activity android:name="MessageListActivit"></activity>
 
     </application>
 
