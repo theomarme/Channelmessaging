@@ -21,7 +21,7 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Created by marmet on 20/01/2017.
  */
-public class Async extends AsyncTask<Void,Void, String> {
+public class    Async extends AsyncTask<Void,Void, String> {
 
     Context myContext;
     HashMap<String,String> params;

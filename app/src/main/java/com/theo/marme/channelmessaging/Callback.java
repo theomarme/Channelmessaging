@@ -7,7 +7,7 @@ public class Callback {
     public String username;
     public  String password;
     public int code;
-    public String accesstokens;
+    public String accesstoken;
 
     public Callback() {
 

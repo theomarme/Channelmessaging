@@ -2,7 +2,6 @@ package com.theo.marme.channelmessaging;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -63,7 +62,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(this, "Vous êtes connecté ! ", Toast.LENGTH_SHORT).show();
             SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("accesstoken", r.accesstokens);
+            editor.putString("accesstoken", r.accesstoken);
             editor.commit();
 
             Intent appel = new Intent(getApplicationContext(),ChannelListActity.class);

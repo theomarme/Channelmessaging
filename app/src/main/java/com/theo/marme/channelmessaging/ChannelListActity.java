@@ -26,13 +26,16 @@ public class ChannelListActity extends AppCompatActivity implements Async.OnDown
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_channel_list);
 
+        lvChannels = (ListView) findViewById(R.id.lv_id);
+        lvChannels.setOnItemClickListener(this);
+
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         String accestoken = settings.getString("accesstoken","");
 
-        HashMap<String,String> connectInfo = new HashMap<>();
-        connectInfo.put("accesstoken",accestoken);
+        HashMap<String,String> params = new HashMap<>();
+        params.put("accesstoken",accestoken);
 
-        Async d = new Async(this,"http://www.raphaelbischof.fr/messaging/?function=getchannels",connectInfo);
+        Async d = new Async(this,"http://www.raphaelbischof.fr/messaging/?function=getchannels",params);
         d.addOnDownloadCompleteListener(this);
         d.execute();
     }
@@ -52,7 +55,7 @@ public class ChannelListActity extends AppCompatActivity implements Async.OnDown
         }
 
         lvChannels = (ListView) findViewById(R.id.lv_id);
-        lvChannels.setAdapter(new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, c.channels));
+        lvChannels.setAdapter(new ChannelListArrayAdapter(getApplicationContext(), c.channels));
         lvChannels.setOnItemClickListener(this);
     }
 }
