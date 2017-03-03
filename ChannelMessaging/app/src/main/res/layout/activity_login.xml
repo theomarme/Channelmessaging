@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:id="@+id/llBackground"
+    android:background="#303030"
     tools:context="vincent.riva.channelmessaging.LoginActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,40 +19,63 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:id="@+id/imageView"
+                android:src="@drawable/channel_messaging_logo"
+                android:layout_gravity="center" />
+        </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="0dp"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_nom"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Username"
-            android:layout_weight="0.5"
-            android:id="@+id/textViewUsername" />
+            android:layout_margin="16dp">
 
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/editTextUsername" />
+            <EditText
+                android:id="@+id/editTextUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nom utilisateur"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textColorLink="#ffffff"
+                android:textColorHighlight="#ffffff"
+                android:textIsSelectable="false" />
+
+        </android.support.design.widget.TextInputLayout>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="0dp"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_mdp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Password"
-            android:id="@+id/textViewPassword" />
-
+            android:layout_margin="16dp">
         <EditText
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/editTextPassword" />
+            android:id="@+id/editTextPassword"
+            android:hint="Mot de passe"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:password="true" />
+        </android.support.design.widget.TextInputLayout>
+
     </LinearLayout>
 
         <Button
@@ -56,6 +83,27 @@
             android:layout_height="wrap_content"
             android:text="Valider"
             android:id="@+id/buttonValider"
-            android:layout_gravity="center_horizontal" />
+            android:background="#01BFA5"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:text="Connectez-vous pour accéder à la messagerie "
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+
     </LinearLayout>
-</RelativeLayout>
+
+</LinearLayout>

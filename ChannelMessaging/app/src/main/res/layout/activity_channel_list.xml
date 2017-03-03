@@ -9,21 +9,46 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="vincent.riva.channelmessaging.ChannelListActivity">
 
-    <ListView
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listViewChannels"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/buttonAmis" />
+        android:gravity="top"
+        android:transitionName="logo">
 
-    <Button
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@drawable/channel_messaging_logo"
+            android:tint="#000000"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Amis"
-        android:id="@+id/buttonAmis"
-        android:layout_alignParentBottom="false"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="20px" />
+        android:gravity="bottom">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listViewChannels"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/buttonAmis" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amis"
+            android:id="@+id/buttonAmis"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="20px" />
+    </LinearLayout>
+
 </RelativeLayout>

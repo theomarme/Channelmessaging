@@ -1,6 +1,7 @@
 package vincent.riva.channelmessaging;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -22,7 +23,9 @@ public class LoginActivity extends Activity {
         Button buttonValider = (Button)findViewById(R.id.buttonValider);
         final EditText editTextUsername = (EditText)findViewById(R.id.editTextUsername);
         final EditText editTextPassword = (EditText)findViewById(R.id.editTextPassword);
+        final ImageView mIvLogo = (ImageView) findViewById(R.id.imageView);
         final Intent myIntent = new Intent(this, ChannelListActivity.class);
+        final Intent loginIntent = new Intent(LoginActivity.this, ChannelListActivity.class);
         buttonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,7 +39,7 @@ public class LoginActivity extends Activity {
                         SharedPreferences.Editor editor = settings.edit();
                         editor.putString("accesstoken", token.getAccesstoken());
                         editor.commit();
-                        startActivity(myIntent);
+                        startActivity(loginIntent, ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, mIvLogo, "logo").toBundle());
                     }
                 });
                 async.execute("http://www.raphaelbischof.fr/messaging/?function=connect", "username", editTextUsername.getText().toString(), "password", editTextPassword.getText().toString());
