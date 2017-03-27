@@ -5,9 +5,9 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        applicationId "com.theo.marme.channelmessaging"
-        minSdkVersion 22
-        targetSdkVersion 23
+        applicationId "riva.vincent.channelmessaging"
+        minSdkVersion 21
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
     }
@@ -20,10 +20,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.google.code.gson:gson:2.2.4'
-
-
+    compile 'com.android.support:appcompat-v7:25.1.1'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.android.support:design:25.1.0'
 }
