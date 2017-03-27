@@ -28,17 +28,16 @@ import vincent.riva.channelmessaging.ResponseChannelList;
 public class ChannelListFragment extends Fragment{
 
 
-
-
+/*
+    private ResponseChannelList channelList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View v=  inflater.inflate(R.layout.layout_fragment, container, false);
         final ListView listViewChannels = (ListView)v.findViewById(R.id.listView_frag);
 
-        Button buttonAmis = (Button)V.findViewById(R.id.button_frag);
+        Button buttonAmis = (Button)v.findViewById(R.id.button_frag);
         buttonAmis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,12 +55,12 @@ public class ChannelListFragment extends Fragment{
             public void onCompleteRequest(String response) {
                 Gson gson = new Gson();
                 channelList = gson.fromJson(response, ResponseChannelList.class);
-                listViewChannels.setAdapter(new ChannelArrayAdapter(getApplicationContext(), channelList.getChannels()));
+                listViewChannels.setAdapter(new ChannelArrayAdapter(getActivity().getApplicationContext(), channelList.getChannels()));
                 listViewChannels.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         ResponseChannel channel = channelList.getChannels().get(position);
-                        Intent myIntent2 = new Intent(getApplicationContext(), ChannelActivity.class);
+                        Intent myIntent2 = new Intent(getActivity().getApplicationContext(), ChannelActivity.class);
                         myIntent2.putExtra("channelID", channel.getChannelID());
                         startActivity(myIntent2);
                     }
@@ -69,5 +68,5 @@ public class ChannelListFragment extends Fragment{
             }
         });
         async.execute("http://www.raphaelbischof.fr/messaging/?function=getchannels", "accesstoken", token);
-    }
+    }*/
 }
